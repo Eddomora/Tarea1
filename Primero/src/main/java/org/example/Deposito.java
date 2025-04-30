@@ -1,4 +1,4 @@
-package Primero.src.main.java.org.example;
+package org.example;
 
 import java.util.ArrayList;
 
