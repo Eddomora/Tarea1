@@ -3,21 +3,27 @@ package org.example;
 public class Expendedor {
     public static final int COCA = 1;
     public static final int SPRITE = 2;
-    private Deposito coca;
-    private Deposito sprite;
-    private DepositoM monVu;
+    public static final int FANTA = 3;
+    private Deposito<Bebida> coca;
+    private Deposito<Bebida> sprite;
+    private Deposito<Bebida> fanta;
+    private Deposito<Moneda> monVu;
     int precio;
 
     public Expendedor(int cantidad, int precioBebidas) {
-        coca = new Deposito(cantidad);
-        sprite = new Deposito(cantidad);
-        monVu = new DepositoM(cantidad);
+        coca = new Deposito<Bebida>();
+        sprite = new Deposito<Bebida>();
+        fanta = new Deposito<Bebida>();
+
+        monVu = new Deposito();
         this.precio = precioBebidas;
         for (int i = 0; i < cantidad; i++) {
             Bebida cocacola = new CocaCola(100 + i);
-            coca.addBebida(cocacola);
+            coca.addCosa(cocacola);
             Bebida spriite = new Sprite(200 + i);
-            sprite.addBebida(spriite);
+            sprite.addCosa(spriite);
+            Bebida faanta = new Fanta(300 + i);
+            sprite.addCosa(faanta);
         }
     }
 
@@ -30,41 +36,41 @@ public class Expendedor {
         int valorMoneda = moneda.getValor();
 
         if (valorMoneda < this.precio) {
-            monVu.addMoneda(moneda);
+            monVu.addCosa(moneda);
             return null;
         }
 
         int vuelto_temporal = moneda.getValor() - this.precio;
 
         if (select == COCA) {
-            Bebida b = coca.getBebida();
+            Bebida b = coca.getCosa();
             if (b == null) {
-                monVu.addMoneda(moneda);
+                monVu.addCosa(moneda);
             }
             else {
                 for (int i=0; i< vuelto_temporal; i+=100) {
-                    monVu.addMoneda(new Moneda100());
+                    monVu.addCosa(new Moneda100());
                 }
             }
             return b;
 
         } else if (select == SPRITE) {
-            Bebida b = sprite.getBebida();
+            Bebida b = sprite.getCosa();
             if (b == null) {
-                monVu.addMoneda(moneda);
+                monVu.addCosa(moneda);
             }
             else {
                 for (int i=0; i< vuelto_temporal; i+=100) {
-                    monVu.addMoneda(new Moneda100());
+                    monVu.addCosa(new Moneda100());
                 }}
             return b;
         }
         else {
-            monVu.addMoneda(moneda);
+            monVu.addCosa(moneda);
             return null;
         }
     }
     public Moneda getVuelto() {
-        return monVu.getMoneda();
+        return monVu.getCosa();
     }
 }
