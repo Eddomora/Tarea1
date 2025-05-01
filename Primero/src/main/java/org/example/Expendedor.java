@@ -43,20 +43,17 @@ public class Expendedor {
         }
     }
 
-    public Bebida comprarBebida(Moneda moneda, int select) {
+    public Producto comprarProducto(Moneda moneda, int select) throws PagoInsuficienteException, PagoIncorrectoException {
+        int valorMoneda = moneda.getValor();
+        int vuelto_temporal = moneda.getValor() - this.precio;
 
         if (moneda == null) {
-            return null;
+            throw new PagoIncorrectoException();
         }
-
-        int valorMoneda = moneda.getValor();
-
-        if (valorMoneda < this.precio) {
+        else if (valorMoneda < this.precio) {
             monVu.addCosa(moneda);
-            return null;
+            throw new PagoInsuficienteException();
         }
-
-        int vuelto_temporal = moneda.getValor() - this.precio;
 
         if (select == COCA) {
             Bebida b = coca.getCosa();
@@ -88,5 +85,20 @@ public class Expendedor {
     }
     public Moneda getVuelto() {
         return monVu.getCosa();
+    }
+    public class NoHayProductoException extends Exception{
+        public NoHayProductoException(){
+            super();
+        }
+    }
+    public class PagoIncorrectoException extends Exception{
+        public PagoIncorrectoException(){
+            super();
+        }
+    }
+    public class PagoInsuficienteException extends Exception{
+        public PagoInsuficienteException(){
+            super();
+        }
     }
 }
