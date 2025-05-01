@@ -2,7 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 
-class Deposito<T>{
+public class Deposito<T>{
     private ArrayList<T> dep;
 
     public Deposito(){
