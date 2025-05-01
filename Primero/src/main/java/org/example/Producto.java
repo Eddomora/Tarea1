@@ -1,6 +1,6 @@
 package org.example;
 
-abstract class Producto {
+public abstract class Producto {
     private int serie;
 
     public Producto(int numero){
@@ -11,5 +11,4 @@ abstract class Producto {
         return serie;
     }
 
-    public abstract String accion();
 }

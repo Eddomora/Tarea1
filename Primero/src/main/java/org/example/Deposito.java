@@ -2,40 +2,25 @@ package org.example;
 
 import java.util.ArrayList;
 
-class Deposito {
-    private ArrayList<Bebida> dep;
-    public void addBebida(Bebida bebida) {
-        dep.add(bebida);
-    }
-    public Bebida getBebida() {
-        if (dep.size() != 0) {
-            Bebida b = dep.get(0);
-            dep.remove(0);
-            return b;
-        } else {
-            return null;
-        }
-    }
-    public Deposito(int c) {
-        dep = new ArrayList<Bebida>(c);
-    }
-}
+public class Deposito<T>{
+    private ArrayList<T> dep;
 
-class DepositoM {
-    private ArrayList<Moneda> depM;
-    public void addMoneda(Moneda moneda) {
-        depM.add(moneda);
+    public Deposito(){
+        dep = new ArrayList<T>();
     }
-    public Moneda getMoneda() {
-        if (depM.size() != 0) {
-            Moneda m = depM.get(0);
-            depM.remove(0);
-            return m;
-        } else {
+
+    public void addCosa(T cosa){
+        dep.add(cosa);
+    }
+
+    public T getCosa() {
+        if (dep.size() == 0) {
             return null;
         }
+        return dep.remove(0);
     }
-    public DepositoM(int c) {
-        depM = new ArrayList<Moneda>(c);
+
+    public int size(){
+        return dep.size();
     }
 }
