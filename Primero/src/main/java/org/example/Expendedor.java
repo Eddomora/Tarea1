@@ -12,9 +12,9 @@ public class Expendedor {
     private Deposito<Dulces> snickers;
     private Deposito<Dulces> super8;
     private Deposito<Moneda> monVu;
-    int precio;
 
-    public Expendedor(int cantidad, int precioBebidas) {
+
+    public Expendedor(int cantidad) {
         coca = new Deposito<Bebida>();
         sprite = new Deposito<Bebida>();
         fanta = new Deposito<Bebida>();
@@ -22,7 +22,7 @@ public class Expendedor {
         super8 = new Deposito<Dulces>();
         monVu = new Deposito<Moneda>();
 
-        this.precio = precioBebidas;
+
 
         for (int i = 0; i < cantidad; i++) {
 
@@ -43,16 +43,16 @@ public class Expendedor {
         }
     }
 
-    public Producto comprarProducto(Moneda moneda, int select) throws PagoInsuficienteException, PagoIncorrectoException {
+    public Producto comprarProducto(Moneda moneda, int select, int precio) /* throws PagoInsuficienteException, PagoIncorrectoException */{
         int valorMoneda = moneda.getValor();
-        int vuelto_temporal = moneda.getValor() - this.precio;
+        int vuelto_temporal = moneda.getValor() - precio;
 
         if (moneda == null) {
-            throw new PagoIncorrectoException();
+            //throw new PagoIncorrectoException();
         }
-        else if (valorMoneda < this.precio) {
+        else if (valorMoneda < precio) {
             monVu.addCosa(moneda);
-            throw new PagoInsuficienteException();
+            //throw new PagoInsuficienteException();
         }
 
         if (select == COCA) {

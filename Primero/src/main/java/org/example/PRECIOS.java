@@ -1,10 +1,16 @@
 package org.example;
 
-public enum PRECIOS {;
-    //en Poceso, no debería retornar su identificador, sino el precio de cada  Producto
-    public static final int COCA = 1;
-    public static final int SPRITE = 2;
-    public static final int FANTA = 3;
-    public static final int SNICKERS = 4;
-    public static final int SUPER8 = 5;
+public enum PRECIOS {
+    COCACOLA(1500),
+    SPRITE(1000),
+    FANTA(1100),
+    SUPER8(800),
+    SNICKERS(2000);
+    private final int precio;
+    PRECIOS(int precio) {
+        this.precio = precio;
+    }
+    public int getPrecio() {
+        return precio;
+    }
 }
