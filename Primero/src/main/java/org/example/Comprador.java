@@ -3,13 +3,13 @@ package org.example;
 class Comprador {
     private String sonido;
     private int vuelto;
-    public Comprador(Moneda m, int cualBebida, Expendedor exp) throws Expendedor.PagoInsuficienteException, Expendedor.PagoIncorrectoException {
+    public Comprador(Moneda m, int cualProducto, int precio, Expendedor exp) /*throws Expendedor.PagoInsuficienteException, Expendedor.PagoIncorrectoException */{
         this.sonido = null;
         this.vuelto = 0;
         if (m == null) {
             return;
         }
-        Bebida bebi = (Bebida) exp.comprarProducto(m, cualBebida);
+        Bebida bebi = (Bebida) exp.comprarProducto(m, cualProducto, precio);
         if (bebi != null) {
             this.sonido = bebi.beber();
         }
