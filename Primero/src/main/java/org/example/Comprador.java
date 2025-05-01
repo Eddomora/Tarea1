@@ -1,14 +1,11 @@
 package org.example;
 
-public class Comprador {
-
+class Comprador {
     private String sonido;
     private int vuelto;
-
     public Comprador(Moneda m, int cualBebida, Expendedor exp) {
         this.sonido = null;
         this.vuelto = 0;
-
         if (m == null) {
             return;
         }
@@ -23,7 +20,6 @@ public class Comprador {
             vuelto += aux.getValor();
         }
     }
-
     public String queBebiste() {
         return sonido;
     }
