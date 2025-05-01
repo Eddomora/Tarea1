@@ -7,6 +7,6 @@ public class Super8  extends Dulces{
 
     @Override
     public String comer() {
-        return "Super8";
+        return "super8";
     }
 }

@@ -7,6 +7,6 @@ public class Snickers extends Dulces{
 
     @Override
     public String comer() {
-        return "Snickers";
+        return "snickers";
     }
 }

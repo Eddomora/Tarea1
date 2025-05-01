@@ -9,9 +9,17 @@ class Comprador {
         if (m == null) {
             return;
         }
-        Bebida bebi = (Bebida) exp.comprarProducto(m, cualProducto, precio);
-        if (bebi != null) {
-            this.sonido = bebi.beber();
+
+        if (cualProducto==1 || cualProducto==2 || cualProducto==3) {
+            Bebida compra = (Bebida) exp.comprarProducto(m, cualProducto, precio);
+            if (compra != null) {
+                this.sonido = compra.beber();
+            }
+        } else if (cualProducto==4 || cualProducto==5){
+            Dulces compra = (Dulces) exp.comprarProducto(m, cualProducto, precio);
+            if (compra != null) {
+                this.sonido = compra.comer();
+            }
         }
 
         while (true) {
@@ -20,7 +28,7 @@ class Comprador {
             vuelto += aux.getValor();
         }
     }
-    public String queBebiste() {
+    public String queCompraste() {
         return sonido;
     }
     public int cuantoVuelto() {

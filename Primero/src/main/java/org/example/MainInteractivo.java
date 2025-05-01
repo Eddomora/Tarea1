@@ -24,7 +24,7 @@ public class MainInteractivo {
                 break;
             case 4:
                 c = new Comprador(m,4, PRECIOS.SUPER8.getPrecio(), exp);
-//modificar para el 4 y 5 para que funcione con los dulces
+
                 break;
             case 5:
                 c = new Comprador(m,5, PRECIOS.SNICKERS.getPrecio(), exp);
