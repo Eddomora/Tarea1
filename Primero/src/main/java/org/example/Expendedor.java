@@ -23,7 +23,6 @@ public class Expendedor {
         monVu = new Deposito<Moneda>();
 
 
-
         for (int i = 0; i < cantidad; i++) {
 
             Bebida cocacola = new CocaCola(100 + i);
@@ -43,18 +42,81 @@ public class Expendedor {
         }
     }
 
-    public Producto comprarProducto(Moneda moneda, int select, int precio) /* throws PagoInsuficienteException, PagoIncorrectoException */{
+    public Producto comprarProducto(Moneda moneda, int select, int precio) /* throws PagoInsuficienteException, PagoIncorrectoException */ {
         int valorMoneda = moneda.getValor();
         int vuelto_temporal = moneda.getValor() - precio;
 
         if (moneda == null) {
             //throw new PagoIncorrectoException();
-        }
-        else if (valorMoneda < precio) {
+        } else if (valorMoneda < precio) {
             monVu.addCosa(moneda);
             //throw new PagoInsuficienteException();
         }
 
+        Bebida b = null;
+        Dulces d = null;
+        switch (select) {
+            case 1:
+                b = coca.getCosa();
+                if (b == null) {
+                    monVu.addCosa(moneda);
+                } else {
+                    for (int i = 0; i < vuelto_temporal; i += 100) {
+                        monVu.addCosa(new Moneda100());
+                    }
+                }
+                return b;
+
+            case 2:
+                b = sprite.getCosa();
+                if (b == null) {
+                    monVu.addCosa(moneda);
+                } else {
+                    for (int i = 0; i < vuelto_temporal; i += 100) {
+                        monVu.addCosa(new Moneda100());
+                    }
+                }
+                return b;
+
+            case 3:
+                b = fanta.getCosa();
+                if (b == null) {
+                    monVu.addCosa(moneda);
+                } else {
+                    for (int i = 0; i < vuelto_temporal; i += 100) {
+                        monVu.addCosa(new Moneda100());
+                    }
+                }
+                return b;
+
+            case 4:
+                d = super8.getCosa();
+                if (d == null) {
+                    monVu.addCosa(moneda);
+                } else {
+                    for (int i = 0; i < vuelto_temporal; i += 100) {
+                        monVu.addCosa(new Moneda100());
+                    }
+                }
+                return d;
+
+            case 5:
+                d = snickers.getCosa();
+                if (d == null) {
+                    monVu.addCosa(moneda);
+                } else {
+                    for (int i = 0; i < vuelto_temporal; i += 100) {
+                        monVu.addCosa(new Moneda100());
+                    }
+                }
+                return d;
+
+            default:
+                monVu.addCosa(moneda);
+                return null;
+        }
+
+        /*
         if (select == COCA) {
             Bebida b = coca.getCosa();
             if (b == null) {
@@ -82,6 +144,7 @@ public class Expendedor {
             monVu.addCosa(moneda);
             return null;
         }
+         */
     }
     public Moneda getVuelto() {
         return monVu.getCosa();
