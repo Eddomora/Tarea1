@@ -6,6 +6,6 @@ public class Main {
         Moneda m = null;
         Comprador c = null;
         c = new Comprador(m,Expendedor.COCA, PRECIOS.COCACOLA.getPrecio(), exp);
-        System.out.println(c.queBebiste() + ", " + c.cuantoVuelto());
+        System.out.println(c.queCompraste() + ", " + c.cuantoVuelto());
     }
 }
