@@ -1,12 +1,22 @@
 package org.example;
 
-public abstract class Moneda {
+//(pauta): deben implementar la interfaz Comparable y entonces el metodo compareTo
+public abstract class Moneda implements Comparable<Moneda> {
     public Moneda() {}
+
     public Moneda getSerie() {
         return this;
     }
+
     public abstract int getValor();
+
+    @Override
+    public int compareTo(Moneda otra) {
+        return Integer.compare(this.getValor(), otra.getValor());
+    }
 }
+
+
 class Moneda1500 extends Moneda {
     public Moneda1500() {
         super();
