@@ -9,9 +9,9 @@ public class Main {
             Moneda m = null;
             Comprador c = null;
             c = new Comprador(m, Expendedor.COCA, PRECIOS.COCACOLA.getPrecio(), exp);
-            // Lanza PagoIncorrectoException correctamente
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
             System.err.println(e.getMessage());
         }
+        // Ahora PagoInsuficiente
     }
 }

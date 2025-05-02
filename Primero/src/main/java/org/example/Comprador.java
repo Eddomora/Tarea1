@@ -28,3 +28,14 @@ class Comprador {
     }
 
 }
+//public Comprador(Moneda m, int cualBebida, Expendedor exp){
+//        Bebida b = exp.comprarBebida(m,cualBebida);
+//        if (b != null) {
+//            sonido = b.beber();
+//        }
+//        Moneda monedaSaliente = exp.getVuelto();
+//        while(monedaSaliente != null){
+//            vuelto += monedaSaliente.getValor();
+//            monedaSaliente = exp.getVuelto();
+//        }
+//    }
