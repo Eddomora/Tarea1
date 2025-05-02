@@ -42,15 +42,15 @@ public class Expendedor {
         }
     }
 
-    public Producto comprarProducto(Moneda moneda, int select, int precio) /* throws PagoInsuficienteException, PagoIncorrectoException */ {
+    public Producto comprarProducto(Moneda moneda, int select, int precio) throws PagoIncorrectoException, PagoInsuficienteException {
+        if (moneda == null) {
+            throw new PagoIncorrectoException();
+        }
         int valorMoneda = moneda.getValor();
         int vuelto_temporal = moneda.getValor() - precio;
-
-        if (moneda == null) {
-            //throw new PagoIncorrectoException();
-        } else if (valorMoneda < precio) {
+        if (valorMoneda < precio) {
             monVu.addCosa(moneda);
-            //throw new PagoInsuficienteException();
+            throw new PagoInsuficienteException();
         }
 
         Bebida b = null;

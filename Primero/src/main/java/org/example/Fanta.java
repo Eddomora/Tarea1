@@ -4,8 +4,9 @@ public class Fanta extends Bebida{
     public Fanta(int numero) {
         super(numero);
     }
-    public String beber() {
-        return "fanta";
+    @Override
+    public String accion() {
+        return super.accion() + "fanta";
     }
 }
 

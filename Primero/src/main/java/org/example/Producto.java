@@ -11,4 +11,5 @@ public abstract class Producto {
         return serie;
     }
 
+    public abstract String accion();
 }

@@ -7,5 +7,5 @@ public abstract class Dulces extends Producto {
         super(numero);
     }
 
-    public abstract String comer();
+    public String accion(){return "Estás comiendo: ";}
 }
