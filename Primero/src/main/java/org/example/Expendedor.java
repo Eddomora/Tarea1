@@ -60,62 +60,42 @@ public class Expendedor {
         switch (select) {
             case 1:
                 b = coca.getCosa();
-                if (b == null) {
-                    monVu.addCosa(moneda);
-                } else {
-                    for (int i = 0; i < vuelto_temporal; i += 100) {
-                        monVu.addCosa(new Moneda100());
-                    }
-                }
-                return b;
+                break;
 
             case 2:
                 b = sprite.getCosa();
-                if (b == null) {
-                    monVu.addCosa(moneda);
-                } else {
-                    for (int i = 0; i < vuelto_temporal; i += 100) {
-                        monVu.addCosa(new Moneda100());
-                    }
-                }
-                return b;
+                break;
 
             case 3:
                 b = fanta.getCosa();
-                if (b == null) {
-                    monVu.addCosa(moneda);
-                } else {
-                    for (int i = 0; i < vuelto_temporal; i += 100) {
-                        monVu.addCosa(new Moneda100());
-                    }
-                }
-                return b;
+                break;
 
             case 4:
                 d = super8.getCosa();
-                if (d == null) {
-                    monVu.addCosa(moneda);
-                } else {
-                    for (int i = 0; i < vuelto_temporal; i += 100) {
-                        monVu.addCosa(new Moneda100());
-                    }
-                }
-                return d;
+                break;
 
             case 5:
                 d = snickers.getCosa();
-                if (d == null) {
-                    monVu.addCosa(moneda);
-                } else {
-                    for (int i = 0; i < vuelto_temporal; i += 100) {
-                        monVu.addCosa(new Moneda100());
-                    }
-                }
-                return d;
+                break;
 
             default:
                 monVu.addCosa(moneda);
-                return null;
+                throw new NoHayProductoException("Número del producto equivocado");
+        }
+        if((b == null) && (d == null)){
+            monVu.addCosa(moneda);
+            throw new NoHayProductoException("No queda producto en el depósito");
+        }
+        else{
+            for (int i = 0; i < vuelto_temporal; i += 100) {
+                monVu.addCosa(new Moneda100());
+            }
+            if (b == null){
+                return d;
+            }
+            else{
+                return b;
+            }
         }
 
         /*
