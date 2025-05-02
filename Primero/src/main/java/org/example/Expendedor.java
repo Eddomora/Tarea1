@@ -14,7 +14,11 @@ public class Expendedor {
     private Deposito<Dulces> super8;
     private Deposito<Moneda> monVu;
 
-
+    /**
+     * El constructor del expendedor llena los depósitos con una cantidad dada de cada producto.
+     *
+     * @param cantidad la cantidad de cada producto que se desea cargar en los depósitos.
+     */
     public Expendedor(int cantidad) {
         coca = new Deposito<Bebida>();
         sprite = new Deposito<Bebida>();
@@ -42,6 +46,15 @@ public class Expendedor {
             super8.addCosa(superocho);
         }
     }
+    /**
+     * Recibe una moneda y hace una compra según el producto seleccionado.
+     * Valida si hay producto, si la moneda es válida y si el pago es suficiente.
+     *
+     * @param moneda la moneda ingresada para pagar.
+     * @param select el número del producto seleccionado.
+     * @param precio el precio del producto seleccionado.
+     * @return el producto comprado (bebida o dulce).
+     */
 
     public Producto comprarProducto(Moneda moneda, int select, int precio) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException {
         if (moneda == null) {
@@ -128,6 +141,11 @@ public class Expendedor {
         }
          */
     }
+    /**
+     * Entrega una moneda del depósito de vuelto.
+     *
+     * @return una {@code Moneda} de vuelto, o {@code null} si ya no quedan.
+     */
     public Moneda getVuelto() {
         return monVu.getCosa();
     }
