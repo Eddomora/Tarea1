@@ -1,4 +1,5 @@
 package org.example;
+import org.example.Excepciones.*;
 
 public class Expendedor {
     public static final int COCA = 1;
@@ -42,15 +43,16 @@ public class Expendedor {
         }
     }
 
-    public Producto comprarProducto(Moneda moneda, int select, int precio) throws PagoIncorrectoException, PagoInsuficienteException {
+    public Producto comprarProducto(Moneda moneda, int select, int precio) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException {
         if (moneda == null) {
-            throw new PagoIncorrectoException();
+            throw new PagoIncorrectoException("No ingresaste una moneda");
         }
         int valorMoneda = moneda.getValor();
         int vuelto_temporal = moneda.getValor() - precio;
+
         if (valorMoneda < precio) {
             monVu.addCosa(moneda);
-            throw new PagoInsuficienteException();
+            throw new PagoInsuficienteException("No te alcanza para comprar el producto");
         }
 
         Bebida b = null;
@@ -148,20 +150,5 @@ public class Expendedor {
     }
     public Moneda getVuelto() {
         return monVu.getCosa();
-    }
-    public class NoHayProductoException extends Exception{
-        public NoHayProductoException(){
-            super();
-        }
-    }
-    public class PagoIncorrectoException extends Exception{
-        public PagoIncorrectoException(){
-            super();
-        }
-    }
-    public class PagoInsuficienteException extends Exception{
-        public PagoInsuficienteException(){
-            super();
-        }
     }
 }

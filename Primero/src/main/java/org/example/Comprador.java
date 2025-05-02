@@ -1,9 +1,10 @@
 package org.example;
+import org.example.Excepciones.*;
 
 class Comprador {
     private String sonido;
     private int vuelto;
-    public Comprador(Moneda m, int cualProducto, int precio, Expendedor exp) throws Expendedor.PagoInsuficienteException, Expendedor.PagoIncorrectoException /*throws Expendedor.PagoInsuficienteException, Expendedor.PagoIncorrectoException */{
+    public Comprador(Moneda m, int cualProducto, int precio, Expendedor exp) throws PagoInsuficienteException, PagoIncorrectoException, NoHayProductoException{
         this.sonido = null;
         this.vuelto = 0;
 
