@@ -8,8 +8,13 @@ class Comprador {
         this.sonido = null;
         this.vuelto = 0;
 
-        if (cualProducto==1 || cualProducto==2 || cualProducto==3 || cualProducto == 4 || cualProducto == 5) {
+        if (cualProducto==1 || cualProducto==2 || cualProducto==3) {
             Bebida compra = (Bebida) exp.comprarProducto(m, cualProducto, precio);
+            if (compra != null) {
+                this.sonido = compra.accion();
+            }
+        } else if (cualProducto==4 || cualProducto==5) {
+            Dulces compra = (Dulces) exp.comprarProducto(m, cualProducto, precio);
             if (compra != null) {
                 this.sonido = compra.accion();
             }
