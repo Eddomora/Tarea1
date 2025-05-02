@@ -4,7 +4,8 @@ public class CocaCola extends Bebida{
     public CocaCola(int numero) {
         super(numero);
     }
-    public String beber() {
-        return "cocacola";
+    @Override
+    public String accion() {
+        return super.accion() + "cocacola";
     }
 }

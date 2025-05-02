@@ -6,5 +6,5 @@ public abstract class Bebida extends Producto{
     public Bebida(int numero){
         super(numero);
     }
-    public abstract String beber();
+    public String accion(){return "Estás bebiendo: ";}
 }

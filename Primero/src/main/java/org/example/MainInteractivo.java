@@ -1,8 +1,12 @@
 package org.example;
+import org.example.Excepciones.NoHayProductoException;
+import org.example.Excepciones.PagoIncorrectoException;
+import org.example.Excepciones.PagoInsuficienteException;
+
 import java.util.Scanner;
 
 public class MainInteractivo {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoHayProductoException, PagoInsuficienteException, PagoIncorrectoException {
         Scanner scanner = new Scanner(System.in);
         Moneda m = new Moneda1500();
         Expendedor exp = new Expendedor(10); //modificar con el enum
