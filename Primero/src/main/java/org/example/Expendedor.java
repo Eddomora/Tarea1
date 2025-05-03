@@ -27,7 +27,6 @@ public class Expendedor {
         super8 = new Deposito<Dulces>();
         monVu = new Deposito<Moneda>();
 
-
         for (int i = 0; i < cantidad; i++) {
 
             Bebida cocacola = new CocaCola(100 + i);
@@ -42,7 +41,7 @@ public class Expendedor {
             Dulces snicker = new Snickers(400 + i);
             snickers.addCosa(snicker);
 
-            Dulces superocho = new Snickers(500 + i);
+            Dulces superocho = new Super8(500 + i);
             super8.addCosa(superocho);
         }
     }
@@ -60,11 +59,12 @@ public class Expendedor {
         if (moneda == null) {
             throw new PagoIncorrectoException("No ingresaste una moneda");
         }
+        monVu.addCosa(moneda);
         int valorMoneda = moneda.getValor();
         int vuelto_temporal = moneda.getValor() - precio;
 
         if (valorMoneda < precio) {
-            monVu.addCosa(moneda);
+            monVu.getCosa();
             throw new PagoInsuficienteException("No te alcanza para comprar el producto");
         }
 
@@ -84,19 +84,19 @@ public class Expendedor {
                 break;
 
             case 4:
-                d = super8.getCosa();
-                break;
-
-            case 5:
                 d = snickers.getCosa();
                 break;
 
+            case 5:
+                d = super8.getCosa();
+                break;
+
             default:
-                monVu.addCosa(moneda);
+                monVu.getCosa();
                 throw new NoHayProductoException("Número del producto equivocado");
         }
         if((b == null) && (d == null)){
-            monVu.addCosa(moneda);
+            monVu.getCosa();
             throw new NoHayProductoException("No queda producto en el depósito");
         }
         else{
@@ -104,42 +104,14 @@ public class Expendedor {
                 monVu.addCosa(new Moneda100());
             }
             if (b == null){
+                monVu.getCosa();
                 return d;
             }
             else{
+                monVu.getCosa();
                 return b;
             }
         }
-
-        /*
-        if (select == COCA) {
-            Bebida b = coca.getCosa();
-            if (b == null) {
-                monVu.addCosa(moneda);
-            }
-            else {
-                for (int i=0; i< vuelto_temporal; i+=100) {
-                    monVu.addCosa(new Moneda100());
-                }
-            }
-            return b;
-
-        } else if (select == SPRITE) {
-            Bebida b = sprite.getCosa();
-            if (b == null) {
-                monVu.addCosa(moneda);
-            }
-            else {
-                for (int i=0; i< vuelto_temporal; i+=100) {
-                    monVu.addCosa(new Moneda100());
-                }}
-            return b;
-        }
-        else {
-            monVu.addCosa(moneda);
-            return null;
-        }
-         */
     }
     /**
      * Entrega una moneda del depósito de vuelto.

@@ -38,13 +38,13 @@ public class MainInteractivo {
 
                     break;
                 case 4:
-                    c = new Comprador(m, 4, PRECIOS.SUPER8.getPrecio(), exp);
-                    System.out.println("-- Super 8, su vuelto: $" + c.cuantoVuelto() + " --");
+                    c = new Comprador(m, 4, PRECIOS.SNICKERS.getPrecio(), exp);
+                    System.out.println("-- Snickers, su vuelto: $" + c.cuantoVuelto() + " --");
 
                     break;
                 case 5:
-                    c = new Comprador(m, 5, PRECIOS.SNICKERS.getPrecio(), exp);
-                    System.out.println("-- Snickers, su vuelto: $" + c.cuantoVuelto() + " --");
+                    c = new Comprador(m, 5, PRECIOS.SUPER8.getPrecio(), exp);
+                    System.out.println("-- Super8, su vuelto: $" + c.cuantoVuelto() + " --");
 
                     break;
                 default:
@@ -58,8 +58,8 @@ public class MainInteractivo {
             System.out.println("1. Coca cola");
             System.out.println("2. Fanta");
             System.out.println("3. Sprite");
-            System.out.println("4. Super 8");
-            System.out.println("5. Snicker");
+            System.out.println("4. Snicker");
+            System.out.println("5. Super8");
             System.out.println("0. Salir");
             System.out.print("Ingresa el número de tu elección: ");
         }
