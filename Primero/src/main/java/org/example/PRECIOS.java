@@ -1,4 +1,8 @@
 package org.example;
+/**
+ * Enum Precios define los PRECIOS que tendrá cada producto en el expendedor
+ * Cada constante representa un producto.
+ */
 
 public enum PRECIOS {
     COCACOLA(1200),
