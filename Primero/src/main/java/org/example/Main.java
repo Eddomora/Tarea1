@@ -22,6 +22,8 @@ public class Main {
         Expendedor exp = new Expendedor(1);
         Moneda m = null;
         Comprador c;
+
+        // Cuando se trata de comprar sin moneda
       
         try {
             c = new Comprador(m, Expendedor.COCA, PRECIOS.COCACOLA.getPrecio(), exp);
@@ -29,6 +31,9 @@ public class Main {
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
             System.err.println(e.getMessage());
         }
+
+       // Cuando no te alcanza para comprar el producto
+
         try{
             m = new Moneda500();
             c = new Comprador(m, Expendedor.COCA, PRECIOS.COCACOLA.getPrecio(), exp);
@@ -36,6 +41,8 @@ public class Main {
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
             System.err.println(e.getMessage());
         }
+
+        // Cuando se intenta comprar con el expendedor vacío
         try{
             m = new Moneda1500();
             c = new Comprador(m, Expendedor.COCA, PRECIOS.COCACOLA.getPrecio(), exp);
@@ -43,6 +50,22 @@ public class Main {
 
             Comprador d = new Comprador(m, Expendedor.COCA, PRECIOS.COCACOLA.getPrecio(), exp);
             System.out.println(d.queCompraste() + ", tu vuelto es $" + d.cuantoVuelto());
+        } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
+            System.err.println(e.getMessage());
+        }
+        // Cuando la compra es exitosa y el vuelto es 0
+        try{
+            m = new Moneda1000();
+            c = new Comprador(m, Expendedor.SPRITE, PRECIOS.SPRITE.getPrecio(), exp);
+            System.out.println(c.queCompraste() + ", tu vuelto es $" + c.cuantoVuelto());
+        } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
+            System.err.println(e.getMessage());
+        }
+        // Cuando la compra es exitosa y se compra con moneda de mayor valor que el producto
+        try{
+            m = new Moneda1000();
+            c = new Comprador(m, Expendedor.SUPER8, PRECIOS.SUPER8.getPrecio(), exp);
+            System.out.println(c.queCompraste() + ", tu vuelto es $" + c.cuantoVuelto());
         } catch (PagoIncorrectoException | PagoInsuficienteException | NoHayProductoException e) {
             System.err.println(e.getMessage());
         }
